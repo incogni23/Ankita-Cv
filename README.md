@@ -14,6 +14,10 @@ Then open the URL shown in the terminal.
 
 `index.html` · `styles.css` · `script.js` · **`spiral-journey.js`** (scroll-scrubbed spiral tunnel backdrop) · **`about-studio.js`** · **`edu-contact-studio.js`** (GSAP / ScrollTrigger from [jsDelivr](https://www.jsdelivr.com/)) · `profile.png` · `AnkitaCV.pdf`
 
-**Motion:** append `?anim=1` or `localStorage.setItem("ankitaPortfolioAnim","1")` if the OS prefers reduced motion but you want hero/boot animations, **the spiral “descent”,** About / Education / Contact scroll choreography, and the **“scroll into the tunnel”** depth rig (`spiral-depth-rig-live` on `<html>` when motion is enabled).
+**Motion:** append `?anim=1` or `localStorage.setItem("ankitaPortfolioAnim","1")` if the OS prefers reduced motion but you want hero/boot animations, **the scroll-scrubbed spiral overlay**, and About / Education / Contact scroll choreography. The spiral is drawn on a **fixed SVG layer** (not a 3D transform on `<main>`), so the layout stays rectangular.
 
-The page **still scrolls vertically** under the hood (so anchors, keyboards, and screen readers behave normally): the inward feeling comes from cancelling part of vertical motion with transforms + perspective on `.spiral-surface`.
+Scroll drives **steady** rotations and drift on those SVG groups (ribbon corkscrew) without perspective skewing the page content.
+
+## Social / link previews
+
+`<head>` includes Open Graph / Twitter meta. After you publish a real URL (e.g. GitHub Pages or a domain), add or update **`og:url`** / **`canonical`** in `index.html` so shares point at the live site.

@@ -162,89 +162,48 @@
     });
   }
 
-  function applySpiralProgress(docEl, traceEls, p, surfaceEl, depthEnabled) {
+  function applySpiralProgress(docEl, traceEls, p, surfaceEl) {
     p = typeof p !== "number" ? 0 : Math.min(1, Math.max(0, p));
 
     docEl.style.setProperty("--spiral-t", String(p));
 
-    var wx = Math.sin(p * Math.PI * 13) * 17;
-    var wy = Math.cos(p * Math.PI * 9) * 9;
+    var spiralTurns = p * Math.PI * 6; /* corkscrew phase across the page → ~3 sine cycles */
+    var wx = Math.sin(spiralTurns) * 14;
+    var wy = Math.cos(spiralTurns) * 11;
     docEl.style.setProperty("--spiral-wobble-x", wx + "px");
     docEl.style.setProperty("--spiral-wobble-y", wy + "px");
 
-    /* Legacy hook */
-    docEl.style.setProperty("--spiral-surface-zoom", String(1 - p * 0.038));
+    var shellScale = Math.max(0.28, 1.03 - p * 0.58);
+    docEl.style.setProperty("--spiral-scale-shell", String(shellScale));
+
+    var shellDeg = p * 920 + Math.sin(spiralTurns + 0.4) * 42;
+    docEl.style.setProperty("--spiral-rot-shell", shellDeg.toFixed(2) + "deg");
+    docEl.style.setProperty("--spiral-tx-shell", (-38 * p + Math.sin(spiralTurns + 1.1) * 14).toFixed(2) + "px");
+    docEl.style.setProperty("--spiral-ty-shell", (-32 * p + Math.cos(spiralTurns - 0.6) * 12).toFixed(2) + "px");
+
+    docEl.style.setProperty("--spiral-rot-cw", (-(p * 600) + Math.sin(spiralTurns) * -52).toFixed(2) + "deg");
+    docEl.style.setProperty("--spiral-rot-ccw", (p * 660 + Math.sin(spiralTurns + 2.05) * 56).toFixed(2) + "deg");
+    docEl.style.setProperty("--spiral-rot-sat", (-(p * 240) + Math.cos(spiralTurns + 1.4) * 55).toFixed(2) + "deg");
+
+    docEl.style.setProperty("--spiral-scale-sat", String(Math.max(0.68, Math.min(1.02, 0.94 + p * 0.05))));
+
+    docEl.style.setProperty("--spiral-host-pulse", "1");
 
     /*
-     * Obvious inward / outward "breathing" along scroll (purely p‑driven —
-     * we do NOT negate document scroll-Y; doing that blew out blank space past the footer).
+     * Never apply perspective / rotateX to .spiral-surface — that skewed the entire page into a trapezoid.
+     * All spiral motion stays on the fixed SVG overlay (.spiral-stage).
      */
-    var breathFast = Math.sin(p * Math.PI * 20);
-    var breathSlow = Math.sin(p * Math.PI * 3.25);
-    var envelope = 0.55 + 0.45 * breathSlow;
-    var pulse = breathFast * envelope;
-
-    var shellScale = (1.06 - p * 0.48) * (1 + 0.13 * pulse);
-    docEl.style.setProperty("--spiral-scale-shell", String(Math.max(0.22, Math.min(1.35, shellScale))));
-
-    docEl.style.setProperty("--spiral-rot-shell", p * 720 + pulse * 110 + "deg");
-    docEl.style.setProperty("--spiral-tx-shell", (-44 * p + pulse * 18).toFixed(2) + "px");
-    docEl.style.setProperty("--spiral-ty-shell", (-36 * p - pulse * 14).toFixed(2) + "px");
-    docEl.style.setProperty("--spiral-rot-cw", (p * -560 + pulse * -55).toFixed(2) + "deg");
-    docEl.style.setProperty("--spiral-rot-ccw", (p * 640 + pulse * 48).toFixed(2) + "deg");
-    docEl.style.setProperty("--spiral-rot-sat", (p * -220 + pulse * 70).toFixed(2) + "deg");
-    docEl.style.setProperty("--spiral-scale-sat", String(Math.max(0.65, Math.min(1.08, (0.94 + p * 0.08) * (1 + 0.05 * pulse)))));
-
-    /* Fixed spiral canvas gently pulses opposite phase for layered depth */
-    docEl.style.setProperty("--spiral-host-pulse", String(1 + pulse * -0.05));
-
-    /*
-     * Tunnel depth on the staged surface — Z + tilt + zoom, no cancelling scrollY (avoids phantom gap).
-     */
-    if (depthEnabled && surfaceEl) {
-      var vh = window.innerHeight || 640;
-      var inward = Math.min(vh * 1.72, Math.max(vh * 1.08, surfaceEl.scrollHeight * 0.11));
-      var dzBase = -p * inward * 0.88;
-      var dz = dzBase + inward * 0.16 * pulse;
-
-      var tilt = Math.min(10.2, Math.max(0, p * 8.95 + pulse * 1.05));
-      var sc = Math.max(0.78, Math.min(1.04, (1 - p * 0.125) * (1 + 0.042 * pulse)));
-      var pers = Math.min(1380, Math.max(760, Math.round(vh * 1.15)));
-
-      surfaceEl.style.transform =
-        "perspective(" +
-        pers +
-        "px) translate3d(" +
-        wx.toFixed(2) +
-        "px," +
-        wy.toFixed(2) +
-        "px," +
-        dz.toFixed(1) +
-        "px) rotateX(" +
-        tilt.toFixed(2) +
-        "deg) scale(" +
-        sc.toFixed(4) +
-        ")";
-      surfaceEl.style.transformOrigin = "50% 12%";
-
-      try {
-        surfaceEl.dataset.depthActive = "1";
-      } catch (eDat) {}
-
-      docEl.classList.add("spiral-depth-rig-live");
-    } else if (!depthEnabled && surfaceEl) {
+    if (surfaceEl) {
       surfaceEl.style.removeProperty("transform");
       surfaceEl.style.removeProperty("transform-origin");
-
       try {
         delete surfaceEl.dataset.depthActive;
-      } catch (eDel) {}
-
-      docEl.classList.remove("spiral-depth-rig-live");
-      docEl.style.removeProperty("--spiral-host-pulse");
+      } catch (eDat) {}
     }
 
-    var offBase = -7200 + p * -15200;
+    docEl.classList.remove("spiral-depth-rig-live");
+
+    var offBase = -7200 + p * -19800;
     if (traceEls && traceEls.length) {
       traceEls.forEach(function (node, ix) {
         node.style.strokeDashoffset = String(offBase * (1 + ix * 0.09));
@@ -267,11 +226,11 @@
     return Math.min(1, Math.max(0, y / max));
   }
 
-  function bindScrollSynth(docEl, traceEls, surfaceEl, depthActive) {
+  function bindScrollSynth(docEl, traceEls, surfaceEl) {
     if (typeof ScrollTrigger === "undefined" || typeof gsap === "undefined") return false;
     gsap.registerPlugin(ScrollTrigger);
 
-    applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl, depthActive);
+    applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl);
 
     ScrollTrigger.create({
       trigger: surfaceEl && surfaceEl.scrollHeight >= 320 ? surfaceEl : document.documentElement,
@@ -280,7 +239,7 @@
       scrub: 0.62,
       invalidateOnRefresh: true,
       onUpdate: function (self) {
-        applySpiralProgress(docEl, traceEls, self.progress, surfaceEl, depthActive);
+        applySpiralProgress(docEl, traceEls, self.progress, surfaceEl);
       },
     });
 
@@ -288,7 +247,7 @@
       try {
         ScrollTrigger.refresh(true);
       } catch (e) {}
-      applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl, depthActive);
+      applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl);
     });
 
     window.addEventListener(
@@ -297,9 +256,29 @@
         requestAnimationFrame(function () {
           try {
             ScrollTrigger.refresh(true);
-            applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl, depthActive);
+            applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl);
           } catch (e3) {}
         });
+      },
+      { passive: true },
+    );
+
+    var rzTimer = null;
+
+    window.addEventListener(
+      "resize",
+      function () {
+        window.clearTimeout(rzTimer);
+        rzTimer = window.setTimeout(function () {
+          rzTimer = null;
+          requestAnimationFrame(function () {
+            try {
+              ScrollTrigger.refresh(true);
+            } catch (e4) {}
+
+            applySpiralProgress(docEl, traceEls, readPageScrollRatio(), surfaceEl);
+          });
+        }, 140);
       },
       { passive: true },
     );
@@ -330,7 +309,7 @@
       traces.forEach(function (path, ix) {
         path.style.strokeDashoffset = String(-6900 + ix * 120);
       });
-      bindScrollSynth(docEl, traces, surfaceEl, true);
+      bindScrollSynth(docEl, traces, surfaceEl);
     } else if (!live) {
       docEl.style.setProperty("--spiral-t", "0.12");
 
@@ -338,7 +317,7 @@
         path.style.strokeDashoffset = String(-9100 + ix * 440);
       });
 
-      applySpiralProgress(docEl, traces, 0.12, surfaceClear || null, false);
+      applySpiralProgress(docEl, traces, 0.12, surfaceClear || null);
     } else {
       /* Live motion but GSAP unavailable — vanilla scroll fallback */
       traces.forEach(function (path, ix) {
@@ -346,12 +325,22 @@
       });
 
       var surf = surfaceClear;
-      var onScrollDepth = function () {
-        applySpiralProgress(docEl, traces, readPageScrollRatio(), surf, true);
+      var rsTimer = null;
+      var onScrollSpiral = function () {
+        applySpiralProgress(docEl, traces, readPageScrollRatio(), surf);
       };
-      onScrollDepth();
-      window.addEventListener("scroll", onScrollDepth, { passive: true });
-      window.addEventListener("resize", onScrollDepth, { passive: true });
+
+      function onResizeSpiral() {
+        window.clearTimeout(rsTimer);
+        rsTimer = window.setTimeout(function () {
+          rsTimer = null;
+          onScrollSpiral();
+        }, 140);
+      }
+
+      onScrollSpiral();
+      window.addEventListener("scroll", onScrollSpiral, { passive: true });
+      window.addEventListener("resize", onResizeSpiral, { passive: true });
     }
 
     requestAnimationFrame(function () {

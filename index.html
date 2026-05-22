@@ -8,6 +8,22 @@
       name="description"
       content="Ankita Dewari: Backend Engineer building scalable distributed systems with Go, cloud-native infrastructure, and event-driven microservices."
     />
+    <meta name="author" content="Ankita Dewari" />
+    <!-- Social preview — override og:url after you publish (custom domain / GitHub Pages). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ankita Dewari · Backend Engineer" />
+    <meta property="og:description" content="Backend Engineer — Go, PostgreSQL, Redis, Kafka, distributed systems." />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/incogni23/Ankita-Cv/main/profile.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ankita Dewari · Backend Engineer" />
+    <meta name="twitter:description" content="Backend Engineer — Go, PostgreSQL, Redis, Kafka, distributed systems." />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/incogni23/Ankita-Cv/main/profile.png"
+    />
     <title>Ankita Dewari · Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,7 +100,7 @@
                 <ul class="hero-role-rail fx-hero-line" style="--fx: 4" role="list">
                   <li><span class="rail-mark" aria-hidden="true"></span> Backend engineer</li>
                   <li><span class="rail-mark" aria-hidden="true"></span> Distributed systems</li>
-                  <li><span class="rail-mark" aria-hidden="true"></span> Go · K8s · Kafka</li>
+                  <li><span class="rail-mark" aria-hidden="true"></span> Go · Postgres · Kafka</li>
                 </ul>
               </div>
 
@@ -113,7 +129,7 @@
                             ><span class="hero-chip-live" aria-hidden="true">●</span>LIVE
                             <span id="live-clock"></span></span
                           >
-                          <span class="badge-tag">Kafka · Gin · K8s</span>
+                          <span class="badge-tag">Kafka · Gin · gRPC</span>
                         </div>
                       </div>
                     </a>
@@ -171,13 +187,13 @@
         <div class="container keyword-inner">
           <span>Go</span>
           <span>Kafka</span>
-          <span>Kubernetes</span>
+          <span>Docker</span>
           <span>gRPC</span>
           <span>PostgreSQL</span>
           <span>Redis</span>
           <span>OpenTelemetry</span>
           <span>Microservices</span>
-          <span>AKS</span>
+          <span>Azure</span>
           <span>Warehouse IoT</span>
         </div>
       </div>
@@ -210,30 +226,36 @@
             <div class="about-studio__story">
               <div class="about-studio__dek">
                 <p class="about-studio__lead about-reveal-line">
-                  I design and ship backends that stay composed under load: bounded latency, sane failure modes, and rollouts that
-                  do not panic the org.
+                  I architect and operate backend systems that remain dependable under sustained load: predictable latency, controlled
+                  failure behavior, and release practices intended to minimize operational risk.
                 </p>
                 <p class="about-studio__fine about-reveal-line">
-                  Day to day it is Kubernetes, Postgres, Redis, and Kafka pipelines, with obsessive attention to observability.
-                  Recent work spans IoT and warehouse automation, multi-tenant AI platforms, and high-volume transactional notification
-                  systems.
+                  Practically, that means PostgreSQL and Redis persistence, Kafka-centered pipelines, and observability treated as part
+                  of the product—not an afterthought. Recent experience spans IoT and warehouse automation, multi-tenant AI
+                  infrastructure, and high-throughput transactional notification services.
                 </p>
               </div>
               <ul class="about-studio__tiles" role="list">
                 <li class="about-studio__tile">
-                  <span class="about-tile-num" aria-hidden="true">01</span>
                   <h3 class="about-tile-h">Throughput &amp; scale</h3>
-                  <p class="about-tile-t">Microservices and queues engineered for noisy neighbours, bursts, and long-lived tenant traffic.</p>
+                  <p class="about-tile-t">
+                    Microservice boundaries and asynchronous processing designed for neighbor contention, irregular traffic bursts, and
+                    sustained multi-tenant workloads.
+                  </p>
                 </li>
                 <li class="about-studio__tile">
-                  <span class="about-tile-num" aria-hidden="true">02</span>
                   <h3 class="about-tile-h">Data discipline</h3>
-                  <p class="about-tile-t">Schema design, pooling, caches, and query paths that shave milliseconds where it matters.</p>
+                  <p class="about-tile-t">
+                    Schema design, connection pooling, caching strategy, and query optimization applied wherever incremental latency
+                    materially affects outcomes.
+                  </p>
                 </li>
                 <li class="about-studio__tile">
-                  <span class="about-tile-num" aria-hidden="true">03</span>
                   <h3 class="about-tile-h">Safe delivery</h3>
-                  <p class="about-tile-t">Stages, rollback stories, mentoring, reviews, and instrumentation that survives real incidents.</p>
+                  <p class="about-tile-t">
+                    Staged deployments with repeatable rollback paths; structured review and mentorship; instrumentation that preserves
+                    actionable signal during production incidents.
+                  </p>
                 </li>
               </ul>
             </div>
@@ -258,7 +280,7 @@
               </div>
               <div class="card-job-body">
                 <h3>Founding Backend Engineer · Source Asia</h3>
-                <p class="stack-line">Go · Postgres · Redis · Kafka · K8s · AKS</p>
+                <p class="stack-line">Go · Postgres · Redis · Kafka · Docker · Azure</p>
                 <ul>
                   <li>Full Go backend for IoT / warehouse automation: ERP &amp; OMS integrations, telemetry, staged rollouts.</li>
                   <li>~45% faster APIs; heavy queries <strong>~900ms → ~250ms</strong> via SQL and caching discipline.</li>
@@ -275,11 +297,11 @@
               </div>
               <div class="card-job-body">
                 <h3>Backend Developer · PioVation GmbH</h3>
-                <p class="stack-line">Go · Keycloak · PostgreSQL · MongoDB · MinIO · Kubernetes</p>
+                <p class="stack-line">Go · Keycloak · PostgreSQL · MongoDB · MinIO · Docker</p>
                 <ul>
                   <li>Multi-tenant <strong>AI infrastructure</strong> with RBAC; gateway trimmed ~35% routing chatter.</li>
                   <li>Hybrid structured + blob storage with ~50% access wins where measured.</li>
-                  <li>Docker/Kubernetes across hybrid cloud.</li>
+                  <li>Docker-based deployments across hybrid cloud environments.</li>
                 </ul>
               </div>
             </article>
@@ -359,7 +381,7 @@
             </div>
             <div class="mini-card motion-reveal">
               <h3>Cloud &amp; ops</h3>
-              <p><span class="pill">Kubernetes</span> <span class="pill">Docker</span> <span class="pill">AWS</span> <span class="pill">Azure AKS</span> <span class="pill">CI/CD</span> <span class="pill">Linux</span></p>
+              <p><span class="pill">Docker</span> <span class="pill">AWS</span> <span class="pill">Azure</span> <span class="pill">CI/CD</span> <span class="pill">Linux</span></p>
             </div>
             <div class="mini-card mini-card-wide motion-reveal">
               <h3>Reliability &amp; performance</h3>
