@@ -27,16 +27,17 @@ Locally, update your remote if needed:
 git remote set-url origin git@github.com:incogni23/ankitadewari-cv.git
 ```
 
-This repo already points **`og:url`** and **canonical** at that default Pages URL (`index.html`). After you rename, push again so previews match.
+**Custom domain (`hiankitahere.com`):** `canonical` / `og:url` in `index.html` use **`https://hiankitahere.com/`**. If GitHub shows **DNS check unsuccessful** or **InvalidDNSError**, DNS is missing or misconfigured.
 
-**Real custom domain (optional):** the **Custom domain** field needs a **full hostname** you control (examples: **`ankitadewari-cv.com`**, **`www.ankitadewari-cv.com`**, **`cv.yourdomain.com`**). Hyphen slug names alone (`ankitadewari-cv`) are invalid there. Steps:
+1. **Confirm the domain is live** — `hiankitahere.com` must resolve globally (registration + delegated nameservers). If tools report *NXDOMAIN* / “non-existent domain”, finish registration **first**—GitHub cannot read records that do not exist.
+2. **Apex (`@`):** add **four `A`** records to GitHub Pages IPs:  
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`  
+   Optional **`AAAA`** on **`@`:** `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+3. **Recommended:** **`www`** **`CNAME`** → **`incogni23.github.io`** (no repo path). Helps HTTPS and apex/`www` handling.
+4. Remove host parking / default **`@`** records that conflict with the GitHub IPs.
+5. Wait for propagation, then **Settings → Pages → Check again**.
 
-1. Buy/configure DNS at your registrar.
-2. **Settings → Pages → Custom domain**: enter your hostname; use **DNS check** guidance from GitHub (A/CNAME/CNAME apex per [their docs](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains)).
-3. Set **Enforce HTTPS** after DNS verifies.
-4. Update **`og:url`** and **`<link rel="canonical">`** in `index.html` to **`https://<your-domain>/`** (absolute URL with your real domain).
-
-If you rename this repository or add a custom domain, keep **`twitter:image`** / **`og:image`** in sync (`raw.githubusercontent.com/incogni23/<repo>/main/profile.png`).
+Docs: [Managing a custom domain for GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). Sites published via **GitHub Actions** store the hostname in **Settings**, not necessarily via a `CNAME` file in the repo.
 
 ## Files
 
@@ -48,4 +49,4 @@ Scroll drives **steady** rotations and drift on those SVG groups (ribbon corkscr
 
 ## Social / link previews
 
-`<head>` includes Open Graph / Twitter meta, **`og:url`**, and a **canonical** link (default: `https://incogni23.github.io/ankitadewari-cv/` once the repo name matches). Adjust if you rename the repo or use a purchased domain only.
+`<head>` targets **`https://hiankitahere.com/`** for **`og:url`** and **canonical**. **`twitter:image`** / **`og:image`** still use **`raw.githubusercontent.com`** for reliability; bump the `/repo/` segment if your GitHub repo name changes.
