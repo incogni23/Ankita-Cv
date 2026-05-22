@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06070e" />
+    <meta
+      name="description"
+      content="Ankita Dewari: Backend Engineer building scalable distributed systems with Go, cloud-native infrastructure, and event-driven microservices."
+    />
+    <title>Ankita Dewari · Backend Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="#">Ankita Dewari</a>
+        <nav class="nav-main" aria-label="Primary">
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+          <ul id="nav-menu" class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a class="header-resume link-pill" href="AnkitaCV.pdf" download>Resume PDF</a>
+      </div>
+    </header>
+
+    <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-fill" id="scroll-progress-fill"></div></div>
+
+    <!-- Full-page spiral descent (scroll-linked; see spiral-journey.js + styles under .spiral-stage) -->
+    <div class="spiral-stage" aria-hidden="true"><div class="spiral-host js-spiral-host"></div></div>
+
+    <div class="spiral-surface">
+    <main id="main" class="spiral-descent-stage">
+      <!-- Hero: 3-column stage (photo center); page uses same dark system below -->
+      <section class="hero bleed-top" aria-labelledby="hero-name-heading">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-matrix" aria-hidden="true"></div>
+        <div class="hero-glow-follow" aria-hidden="true"></div>
+        <div class="hero-grain" aria-hidden="true"></div>
+        <div class="hero-scan-sweep" aria-hidden="true"></div>
+        <div class="container hero-inner hero-hud hero-tilt-scope">
+          <div class="hero-stage">
+            <svg class="hero-wiring-svg" viewBox="0 0 1200 640" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="wire-grad" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(82,212,191,0.88)" />
+                  <stop offset="48%" stop-color="rgba(201,169,98,0.78)" />
+                  <stop offset="100%" stop-color="rgba(130,166,227,0.42)" />
+                </linearGradient>
+              </defs>
+              <path
+                class="w-line w-line-a"
+                d="M 48 298 L 220 298 L 290 226 L 520 226 L 602 368 L 758 368"
+              />
+              <path class="w-line w-line-b" d="M 758 368 L 840 218 L 1020 218 L 1104 294 L 1158 294" />
+              <circle class="w-node w-node-a" cx="48" cy="298" r="5" />
+              <circle class="w-node w-node-b" cx="1158" cy="294" r="5" />
+            </svg>
+
+            <div class="hero-premium-grid">
+              <div class="hero-col hero-col-left">
+                <p class="hero-eyebrow-mini fx-hero-line" style="--fx: 1">
+                  <span class="eyebrow-dot" aria-hidden="true"></span>
+                  Bangalore · backend engineer
+                </p>
+                <p class="hero-hello fx-hero-line" style="--fx: 2">Hello,</p>
+                <p class="hero-tagline fx-hero-line" style="--fx: 3">
+                  Production-grade Go, event buses, and rollouts engineered for uptime: IoT warehouses, AI platforms, and
+                  fintech paths.
+                </p>
+                <ul class="hero-role-rail fx-hero-line" style="--fx: 4" role="list">
+                  <li><span class="rail-mark" aria-hidden="true"></span> Backend engineer</li>
+                  <li><span class="rail-mark" aria-hidden="true"></span> Distributed systems</li>
+                  <li><span class="rail-mark" aria-hidden="true"></span> Go · K8s · Kafka</li>
+                </ul>
+              </div>
+
+              <div class="hero-col hero-col-center">
+                <figure class="hero-portrait-wrap fx-hero-line" style="--fx: 5">
+                  <div class="portrait-shell">
+                    <a
+                      class="hero-portrait-link"
+                      href="https://www.instagram.com/ankitadewariii/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ankita Dewari on Instagram (opens in a new tab)"
+                    >
+                      <div class="portrait-inner">
+                        <img
+                          class="hero-portrait"
+                          src="profile.png"
+                          width="960"
+                          height="1280"
+                          alt=""
+                          decoding="async"
+                          loading="eager"
+                        />
+                        <div class="portrait-badge">
+                          <span class="badge-live"
+                            ><span class="hero-chip-live" aria-hidden="true">●</span>LIVE
+                            <span id="live-clock"></span></span
+                          >
+                          <span class="badge-tag">Kafka · Gin · K8s</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </figure>
+              </div>
+
+              <div class="hero-col hero-col-right">
+                <h1 id="hero-name-heading" class="hero-name-heading fx-hero-line" style="--fx: 6">
+                  <span class="hero-name-soft">I'm</span>
+                  <span class="name-strong name-glitch">Ankita Dewari</span>
+                </h1>
+                <p class="hero-subrole fx-hero-line" style="--fx: 7">Backend · warehouse IoT</p>
+                <div class="hero-schematic fx-hero-line" style="--fx: 8">
+                  <svg class="schematic-wire" viewBox="0 0 132 148" aria-hidden="true">
+                    <path d="M6 128 L72 128 L118 74" />
+                    <circle cx="6" cy="128" r="3.5" fill="rgba(82,212,191,0.7)" />
+                  </svg>
+                  <div class="soc-links">
+                    <a class="soc-hub" href="https://github.com/incogni23" target="_blank" rel="noopener noreferrer"
+                      ><span aria-hidden="true">GH</span><span class="sr-only">GitHub</span></a
+                    >
+                    <a
+                      class="soc-hub"
+                      href="https://linkedin.com/in/ankita-dewari-447752167"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><span aria-hidden="true">LI</span><span class="sr-only">LinkedIn</span></a
+                    >
+                    <a class="soc-hub" href="mailto:ankitasde23@gmail.com"><span aria-hidden="true">@</span><span class="sr-only">Email</span></a>
+                  </div>
+                </div>
+                <div class="hero-actions-band fx-hero-line" style="--fx: 9">
+                  <a class="btn btn-primary" href="mailto:ankitasde23@gmail.com">Email me</a>
+                  <a class="btn btn-ghost" href="AnkitaCV.pdf" download>Resume</a>
+                  <a class="btn btn-ghost" href="https://github.com/incogni23" target="_blank" rel="noopener noreferrer"
+                    >GitHub</a
+                  >
+                  <a
+                    class="btn btn-ghost"
+                    href="https://linkedin.com/in/ankita-dewari-447752167"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >LinkedIn</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keywords -->
+      <div class="keyword-band keyword-band--spiral" aria-label="Technical keywords">
+        <div class="container keyword-inner">
+          <span>Go</span>
+          <span>Kafka</span>
+          <span>Kubernetes</span>
+          <span>gRPC</span>
+          <span>PostgreSQL</span>
+          <span>Redis</span>
+          <span>OpenTelemetry</span>
+          <span>Microservices</span>
+          <span>AKS</span>
+          <span>Warehouse IoT</span>
+        </div>
+      </div>
+
+      <section id="about" class="section about-studio" aria-labelledby="about-heading">
+        <div class="about-studio__ambient" aria-hidden="true">
+          <div class="about-studio__blob about-studio__blob--a"></div>
+          <div class="about-studio__blob about-studio__blob--b"></div>
+          <div class="about-studio__noise"></div>
+        </div>
+        <div class="container about-studio__shell">
+          <div class="about-studio__grid">
+            <header class="about-studio__mast">
+              <p class="about-studio__eyebrow">About</p>
+              <h2 id="about-heading" class="about-studio__h2">
+                <span class="about-studio__h2-line">
+                  <span class="about-reveal-word">Reliability</span><span class="about-studio__slash">/</span><span
+                    class="about-reveal-word about-studio__h2-accent">first</span>
+                </span>
+                <span class="about-studio__h2-mega"><span class="about-reveal-word">Backends</span><span class="about-studio__period">.</span></span>
+              </h2>
+              <div class="about-studio__ribbon" role="presentation">
+                <span class="about-ribbon-chip">Distributed systems</span>
+                <span class="about-ribbon-chip">Event-driven</span>
+                <span class="about-ribbon-chip">SLO-conscious</span>
+                <span class="about-ribbon-chip">Incident-ready</span>
+              </div>
+            </header>
+
+            <div class="about-studio__story">
+              <div class="about-studio__dek">
+                <p class="about-studio__lead about-reveal-line">
+                  I design and ship backends that stay composed under load: bounded latency, sane failure modes, and rollouts that
+                  do not panic the org.
+                </p>
+                <p class="about-studio__fine about-reveal-line">
+                  Day to day it is Kubernetes, Postgres, Redis, and Kafka pipelines, with obsessive attention to observability.
+                  Recent work spans IoT and warehouse automation, multi-tenant AI platforms, and high-volume transactional notification
+                  systems.
+                </p>
+              </div>
+              <ul class="about-studio__tiles" role="list">
+                <li class="about-studio__tile">
+                  <span class="about-tile-num" aria-hidden="true">01</span>
+                  <h3 class="about-tile-h">Throughput &amp; scale</h3>
+                  <p class="about-tile-t">Microservices and queues engineered for noisy neighbours, bursts, and long-lived tenant traffic.</p>
+                </li>
+                <li class="about-studio__tile">
+                  <span class="about-tile-num" aria-hidden="true">02</span>
+                  <h3 class="about-tile-h">Data discipline</h3>
+                  <p class="about-tile-t">Schema design, pooling, caches, and query paths that shave milliseconds where it matters.</p>
+                </li>
+                <li class="about-studio__tile">
+                  <span class="about-tile-num" aria-hidden="true">03</span>
+                  <h3 class="about-tile-h">Safe delivery</h3>
+                  <p class="about-tile-t">Stages, rollback stories, mentoring, reviews, and instrumentation that survives real incidents.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section section-shade">
+        <div class="container">
+          <div class="section-label motion-reveal">Experience</div>
+          <h2 class="section-heading motion-reveal">Roles</h2>
+          <p class="section-lede motion-reveal">
+            From enterprise tooling to founding engineer: services that behave when queues, traffic, and warehouse floors get hectic.
+          </p>
+
+          <div class="stack-cards">
+            <article class="card-job motion-reveal">
+              <div class="card-job-meta">
+                <span class="badge-now">Current</span>
+                <time class="muted">Dec 2025 to Present</time>
+                <span class="muted">Remote / Bangalore</span>
+              </div>
+              <div class="card-job-body">
+                <h3>Founding Backend Engineer · Source Asia</h3>
+                <p class="stack-line">Go · Postgres · Redis · Kafka · K8s · AKS</p>
+                <ul>
+                  <li>Full Go backend for IoT / warehouse automation: ERP &amp; OMS integrations, telemetry, staged rollouts.</li>
+                  <li>~45% faster APIs; heavy queries <strong>~900ms → ~250ms</strong> via SQL and caching discipline.</li>
+                  <li>Architecture, CI/CD, reviews; mentoring engineers and interns alongside debugging.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card-job motion-reveal">
+              <div class="card-job-meta">
+                <span class="badge-num">04</span>
+                <time class="muted">Dec 2024 to Jul 2025</time>
+                <span class="muted">Remote · Germany</span>
+              </div>
+              <div class="card-job-body">
+                <h3>Backend Developer · PioVation GmbH</h3>
+                <p class="stack-line">Go · Keycloak · PostgreSQL · MongoDB · MinIO · Kubernetes</p>
+                <ul>
+                  <li>Multi-tenant <strong>AI infrastructure</strong> with RBAC; gateway trimmed ~35% routing chatter.</li>
+                  <li>Hybrid structured + blob storage with ~50% access wins where measured.</li>
+                  <li>Docker/Kubernetes across hybrid cloud.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card-job motion-reveal">
+              <div class="card-job-meta">
+                <span class="badge-num">03</span>
+                <time class="muted">Mar 2024 to Dec 2024</time>
+                <span class="muted">Bangalore, India</span>
+              </div>
+              <div class="card-job-body">
+                <h3>Software Engineer · FastPay (Stealth)</h3>
+                <p class="stack-line">Go · Gin · Kafka · Redis · PostgreSQL · AWS</p>
+                <ul>
+                  <li>High-volume transactional notifications with reliable webhook-style delivery.</li>
+                  <li>Kafka retries &amp; idempotency; ~30% more dependable callbacks.</li>
+                  <li>Tuning Redis/Postgres/Mongo (~40% leaner paths); OAuth2 + RBAC APIs.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card-job motion-reveal">
+              <div class="card-job-meta">
+                <span class="badge-num">02</span>
+                <time class="muted">2023 to 2024</time>
+                <span class="muted">India</span>
+              </div>
+              <div class="card-job-body">
+                <h3>Software Analyst · Glowtouch Technologies · Aditi Consulting</h3>
+                <p class="stack-line">Go · PostgreSQL · React · CI/CD</p>
+                <ul>
+                  <li>Backend integrations through design, CI/CD, and production deploys.</li>
+                  <li>Go APIs with Postgres and lightweight React surfaces.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card-job card-job-soft motion-reveal">
+              <div class="card-job-meta">
+                <span class="badge-num">01</span>
+                <time class="muted">2020 to 2022</time>
+                <span class="muted">India</span>
+              </div>
+              <div class="card-job-body">
+                <h3>Associate · Byju’s · Genpact</h3>
+                <p class="stack-line">SQL · APIs · Ops tooling</p>
+                <ul>
+                  <li>Enterprise workflows with SQL-heavy integrations and ops-facing tools.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section-label motion-reveal">Skills</div>
+          <h2 class="section-heading motion-reveal">Technical breadth</h2>
+
+          <div class="skills-board">
+            <div class="mini-card motion-reveal">
+              <h3>Languages</h3>
+              <p><span class="pill">Go</span> <span class="pill">SQL</span> <span class="pill">C++</span> <span class="pill">JavaScript</span></p>
+            </div>
+            <div class="mini-card motion-reveal">
+              <h3>Backend</h3>
+              <p>
+                <span class="pill">Microservices</span> <span class="pill">Distributed systems</span> <span class="pill">REST</span>
+                <span class="pill">gRPC</span> <span class="pill">Event-driven</span> <span class="pill">RBAC</span>
+                <span class="pill">OAuth2</span>
+              </p>
+            </div>
+            <div class="mini-card motion-reveal">
+              <h3>Data &amp; messaging</h3>
+              <p><span class="pill">PostgreSQL</span> <span class="pill">Redis</span> <span class="pill">Kafka</span> <span class="pill">MongoDB</span> <span class="pill">MySQL</span></p>
+            </div>
+            <div class="mini-card motion-reveal">
+              <h3>Cloud &amp; ops</h3>
+              <p><span class="pill">Kubernetes</span> <span class="pill">Docker</span> <span class="pill">AWS</span> <span class="pill">Azure AKS</span> <span class="pill">CI/CD</span> <span class="pill">Linux</span></p>
+            </div>
+            <div class="mini-card mini-card-wide motion-reveal">
+              <h3>Reliability &amp; performance</h3>
+              <p>
+                <span class="pill">Query optimization</span> <span class="pill">Caching</span>
+                <span class="pill">Connection pooling</span> <span class="pill">Async processing</span>
+                <span class="pill">Logging</span> <span class="pill">Tracing</span> <span class="pill">Monitoring</span>
+              </p>
+            </div>
+            <div class="mini-card motion-reveal">
+              <h3>Frontend</h3>
+              <p><span class="pill">React.js</span> <span class="pill">HTML</span> <span class="pill">CSS</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section section-shade education-studio" aria-labelledby="education-heading">
+        <div class="education-studio__ambient" aria-hidden="true">
+          <div class="education-studio__blob education-studio__blob--a"></div>
+          <div class="education-studio__blob education-studio__blob--b"></div>
+          <div class="education-studio__noise"></div>
+        </div>
+        <div class="container narrow education-studio__shell">
+          <div class="education-studio__grid">
+            <header class="education-studio__mast">
+              <p class="education-studio__eyebrow edu-reveal">Education</p>
+              <h2 id="education-heading" class="education-studio__h2">
+                <span class="education-studio__h2-line"><span class="edu-reveal-word">Graduation</span></span>
+                <span class="education-studio__h2-sub edu-reveal-line">Formal training layered under years of shipped systems work.</span>
+              </h2>
+            </header>
+            <div class="education-studio__panel edu-reveal-panel">
+              <div class="education-studio__panel-rail" aria-hidden="true"></div>
+              <div class="education-studio__panel-inner">
+                <p class="education-studio__panel-kicker edu-reveal-inner">Credential</p>
+                <h3 class="education-studio__panel-title edu-reveal-inner">G. B. Pant University of Agriculture and Technology</h3>
+                <p class="education-studio__panel-dek edu-reveal-inner">
+                  Bachelor of Technology in Computer Engineering
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-studio" aria-labelledby="contact-heading">
+        <div class="contact-studio__ambient" aria-hidden="true">
+          <div class="contact-studio__blob contact-studio__blob--a"></div>
+          <div class="contact-studio__blob contact-studio__blob--b"></div>
+          <div class="contact-studio__noise"></div>
+        </div>
+        <div class="container contact-studio__shell">
+          <header class="contact-studio__mast">
+            <p class="contact-studio__eyebrow contact-reveal">Contact</p>
+            <h2 id="contact-heading" class="contact-studio__h2">
+              <span class="contact-reveal-word">Say</span> <span class="contact-reveal-word contact-studio__hello-accent">hello</span><span class="contact-studio__period">.</span>
+            </h2>
+            <p class="contact-studio__lede contact-reveal-line">
+              Open to backend, platform, and distributed systems roles.
+            </p>
+          </header>
+
+          <ul class="contact-studio__tiles" role="list">
+            <li class="contact-studio__tile contact-reveal-tile">
+              <span class="contact-tile-lbl">Email</span>
+              <a class="contact-tile-link" href="mailto:ankitasde23@gmail.com">ankitasde23@gmail.com</a>
+            </li>
+            <li class="contact-studio__tile contact-reveal-tile">
+              <span class="contact-tile-lbl">Phone</span>
+              <a class="contact-tile-link" href="tel:+916397707297">+91 63977 07297</a>
+            </li>
+            <li class="contact-studio__tile contact-reveal-tile">
+              <span class="contact-tile-lbl">GitHub</span>
+              <a class="contact-tile-link" href="https://github.com/incogni23" target="_blank" rel="noopener noreferrer">
+                github.com/incogni23
+              </a>
+            </li>
+            <li class="contact-studio__tile contact-reveal-tile">
+              <span class="contact-tile-lbl">LinkedIn</span>
+              <a
+                class="contact-tile-link"
+                href="https://linkedin.com/in/ankita-dewari-447752167"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/ankita-dewari-447752167
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <p>© <span id="year"></span> Ankita Dewari</p>
+        <a href="AnkitaCV.pdf" download>CV (PDF)</a>
+      </div>
+    </footer>
+    </div>
+    <!-- /spiral-surface -->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="spiral-journey.js"></script>
+    <script src="about-studio.js"></script>
+    <script src="edu-contact-studio.js"></script>
+  </body>
+</html>
