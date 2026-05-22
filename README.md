@@ -10,6 +10,18 @@ npx serve .
 
 Then open the URL shown in the terminal.
 
+## Live site (GitHub Pages)
+
+This repo is set up to deploy with **GitHub Actions** (see [`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
+
+1. Push `main` to GitHub (e.g. `git push origin main`).
+2. On GitHub: **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
+4. Open the workflow run under the **Actions** tab; when it finishes, the site is at  
+   **https://incogni23.github.io/Ankita-Cv/**
+
+If you rename the repository or add a custom domain, update **`og:url`** and **`<link rel="canonical">`** in `index.html` to match.
+
 ## Files
 
 `index.html` · `styles.css` · `script.js` · **`spiral-journey.js`** (scroll-scrubbed spiral tunnel backdrop) · **`about-studio.js`** · **`edu-contact-studio.js`** (GSAP / ScrollTrigger from [jsDelivr](https://www.jsdelivr.com/)) · `profile.png` · `AnkitaCV.pdf`
@@ -20,4 +32,4 @@ Scroll drives **steady** rotations and drift on those SVG groups (ribbon corkscr
 
 ## Social / link previews
 
-`<head>` includes Open Graph / Twitter meta. After you publish a real URL (e.g. GitHub Pages or a domain), add or update **`og:url`** / **`canonical`** in `index.html` so shares point at the live site.
+`<head>` includes Open Graph / Twitter meta, **`og:url`**, and a **canonical** link pointing at the GitHub Pages URL. Change those if you use a different host or domain.
