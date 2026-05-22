@@ -17,10 +17,26 @@ This repo is set up to deploy with **GitHub Actions** (see [`.github/workflows/p
 1. Push `main` to GitHub (e.g. `git push origin main`).
 2. On GitHub: **Settings → Pages**.
 3. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
-4. Open the workflow run under the **Actions** tab; when it finishes, the site is at  
-   **https://incogni23.github.io/Ankita-Cv/**
+4. Open the workflow run under the **Actions** tab; when it finishes, the published URL uses your **repository name** in the path, e.g.  
+   **`https://incogni23.github.io/ankitadewari-cv/`**
 
-If you rename the repository or add a custom domain, update **`og:url`** and **`<link rel="canonical">`** in `index.html` to match.
+**Use the slug `ankitadewari-cv`:** on GitHub go to **Settings → General → Repository name**, rename **`Ankita-Cv`** → **`ankitadewari-cv`**. Pages will move to `…/ankitadewari-cv/` automatically.  
+Locally, update your remote if needed:
+
+```bash
+git remote set-url origin git@github.com:incogni23/ankitadewari-cv.git
+```
+
+This repo already points **`og:url`** and **canonical** at that default Pages URL (`index.html`). After you rename, push again so previews match.
+
+**Real custom domain (optional):** the **Custom domain** field needs a **full hostname** you control (examples: **`ankitadewari-cv.com`**, **`www.ankitadewari-cv.com`**, **`cv.yourdomain.com`**). Hyphen slug names alone (`ankitadewari-cv`) are invalid there. Steps:
+
+1. Buy/configure DNS at your registrar.
+2. **Settings → Pages → Custom domain**: enter your hostname; use **DNS check** guidance from GitHub (A/CNAME/CNAME apex per [their docs](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains)).
+3. Set **Enforce HTTPS** after DNS verifies.
+4. Update **`og:url`** and **`<link rel="canonical">`** in `index.html` to **`https://<your-domain>/`** (absolute URL with your real domain).
+
+If you rename this repository or add a custom domain, keep **`twitter:image`** / **`og:image`** in sync (`raw.githubusercontent.com/incogni23/<repo>/main/profile.png`).
 
 ## Files
 
@@ -32,4 +48,4 @@ Scroll drives **steady** rotations and drift on those SVG groups (ribbon corkscr
 
 ## Social / link previews
 
-`<head>` includes Open Graph / Twitter meta, **`og:url`**, and a **canonical** link pointing at the GitHub Pages URL. Change those if you use a different host or domain.
+`<head>` includes Open Graph / Twitter meta, **`og:url`**, and a **canonical** link (default: `https://incogni23.github.io/ankitadewari-cv/` once the repo name matches). Adjust if you rename the repo or use a purchased domain only.
